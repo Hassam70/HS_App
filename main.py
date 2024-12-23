@@ -3,11 +3,12 @@ from pydantic import BaseModel
 from enum  import Enum
 from datetime import datetime
 
+
 app = FastAPI()
 
-class Gender(bool, Enum):
-   MALE: "male" # type: ignore
-   FEMALE: "female" # type: ignore
+class Gender(str, Enum):
+   MALE = "male" # type: ignore
+   FEMALE = "female" # type: ignore
 
 
 class PrimaryModel(BaseModel):
@@ -23,9 +24,9 @@ class NIC(BaseModel):
 class UserAccount(BaseModel):
     account_title: str
     account_number: str
-    is_active: bool
-    is_dormant: bool
-    is_biometric: bool
+    is_active: bool 
+    is_dormant: bool 
+    is_biometric: bool 
     nic: NIC
 
 
@@ -36,5 +37,3 @@ class User(PrimaryModel):
     email: str
     gender: Gender
     account: UserAccount
-
-
